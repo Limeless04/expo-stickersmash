@@ -1,14 +1,11 @@
 import React from "react";
-import { StyleSheet, Image } from "react-native"
-import { ImageSourcePropType } from "react-native";
+import { StyleSheet, Image, ImageSourcePropType } from "react-native"
+import { ImageViewerProps } from "@/types/types";
 
-interface ImageViewerProps{
-  placeholder: ImageSourcePropType
-}
-
-export default function ImageViewer({placeholder}: ImageViewerProps) {
+export default function ImageViewer({placeholder, selectedImage}: ImageViewerProps) {
+  const imageSource: ImageSourcePropType = selectedImage ? { uri: selectedImage } : placeholder
   return (
-    <Image source={placeholder} style={styles.image} />
+    <Image source={imageSource} style={styles.image} />
   )
 }
 
